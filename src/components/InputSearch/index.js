@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
+import PropTypes from 'prop-types';
 
-import { Container, Input } from './styles';
+import { Input } from './styles';
 
-export default function InputSearch({ onChangeText, value }) {
+export default function InputSearch({ onChangeText, value, placeholder }) {
+  const { colors } = useContext(ThemeContext);
+
   return (
-    <Container>
-      <Input
-        placeholder="Buscar por país de origem ..."
-        placeholderTextColor="black"
-        onChangeText={onChangeText}
-        value={value}
-      />
-    </Container>
+    <Input
+      placeholder={placeholder}
+      placeholderTextColor={colors.text}
+      onChangeText={onChangeText}
+      value={value}
+    />
   );
 }
+
+InputSearch.propTypes = {
+  onChangeText: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+};

@@ -12,7 +12,7 @@ export const Logo = styled.Image`
 `;
 export const Title = styled.Text`
   font-size: 20px;
-  color: #fff;
+  color: ${props => props.theme.colors.text};
   font-weight: bold;
   text-align: center;
 `;
@@ -25,7 +25,7 @@ export const CalendarView = styled.View`
 `;
 
 export const EmptyData = styled.Text`
-  color: #fff;
+  color: ${props => props.theme.colors.text};
   text-align: center;
   margin-top: 50px;
 `;

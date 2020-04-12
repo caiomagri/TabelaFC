@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -8,16 +9,18 @@ import Favorites from './pages/Favorites';
 const Tabs = createBottomTabNavigator();
 
 export default function createRouter() {
+  const { colors } = useContext(ThemeContext);
+
   return (
     <>
       <Tabs.Navigator
         tabBarOptions={{
-          activeTintColor: '#20232a',
-          inactiveTintColor: '#999',
-          inactiveBackgroundColor: '#fff',
-          activeBackgroundColor: '#f5f5f5',
+          activeTintColor: colors.activeTintColor,
+          inactiveTintColor: colors.inactiveTintColor,
+          inactiveBackgroundColor: colors.inactiveBackgroundColor,
+          activeBackgroundColor: colors.activeBackgroundColor,
           style: {
-            backgroundColor: '#fff',
+            backgroundColor: colors.primary,
           },
           keyboardHidesTabBar: true,
         }}
@@ -27,7 +30,9 @@ export default function createRouter() {
           component={Leagues}
           options={{
             tabBarLabel: 'Ligas',
-            tabBarIcon: () => <Icon name="trophy" size={20} color="#20232a" />,
+            tabBarIcon: () => (
+              <Icon name="trophy" size={20} color={colors.secondary} />
+            ),
           }}
         />
 
@@ -36,7 +41,9 @@ export default function createRouter() {
           component={Favorites}
           options={{
             tabBarLabel: 'Favoritos',
-            tabBarIcon: () => <Icon name="star" size={20} color="#20232a" />,
+            tabBarIcon: () => (
+              <Icon name="star" size={20} color={colors.secondary} />
+            ),
           }}
         />
       </Tabs.Navigator>

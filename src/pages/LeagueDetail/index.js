@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import React, { useState, useEffect, useContext } from 'react';
+import Axios from 'axios';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
 import { ScrollView, View, StyleSheet, ActivityIndicator } from 'react-native';
 import { Table, Row } from 'react-native-table-component';
+import { ThemeContext } from 'styled-components';
 
 import api from '../../services/api';
 
@@ -10,7 +12,8 @@ import { Container, Logo, Title, CalendarView, EmptyData } from './styles';
 
 import Background from '../../components/Background';
 
-export default function LeagueDetail({ route }) {
+export default function LeagueDetail({ route, navigation }) {
+  const { colors } = useContext(ThemeContext);
   const [loading, setLoading] = useState(true);
   const [tableHead] = useState([
     '#',
@@ -33,44 +36,56 @@ export default function LeagueDetail({ route }) {
       flex: 1,
       padding: 16,
       paddingTop: 30,
-      backgroundColor: '#fff',
     },
-    header: { height: 50, backgroundColor: '#20232a' },
-    headerText: { fontWeight: '100', color: '#fff', textAlign: 'center' },
-    text: { fontWeight: '100', textAlign: 'center' },
-    row: { height: 40, backgroundColor: '#f5f5f5' },
+    header: { height: 50, backgroundColor: colors.background },
+    headerText: { fontWeight: '100', color: colors.text, textAlign: 'center' },
+    text: { fontWeight: '100', textAlign: 'center', color: colors.text },
+    row: { height: 40, backgroundColor: colors.background },
   });
 
   useEffect(() => {
+    let mounted = true;
     async function loadTable() {
-      setLoading(true);
-      const url = `lookuptable.php?l=${league.idLeague}&s=${league.strCurrentSeason}`;
-      const response = await api.get(url);
+      try {
+        const url = `lookuptable.php?l=${league.idLeague}&s=${league.strCurrentSeason}`;
+        const response = await api.get(url);
+        setLoading(false);
 
-      if (response.status === 200) {
-        const { table } = response.data;
-        const tableDataAux = [];
-        if (table) {
-          for (let i = 0; i < table.length; i += 1) {
-            tableDataAux.push([
-              i + 1,
-              table[i].name,
-              table[i].total,
-              table[i].played,
-              table[i].win,
-              table[i].draw,
-              table[i].loss,
-              table[i].goalsfor,
-              table[i].goalsagainst,
-              table[i].goalsdifference,
-            ]);
+        if (response.status === 200) {
+          const { table } = response.data;
+          const tableDataAux = [];
+          if (table) {
+            for (let i = 0; i < table.length; i += 1) {
+              tableDataAux.push([
+                i + 1,
+                table[i].name,
+                table[i].total,
+                table[i].played,
+                table[i].win,
+                table[i].draw,
+                table[i].loss,
+                table[i].goalsfor,
+                table[i].goalsagainst,
+                table[i].goalsdifference,
+              ]);
+            }
           }
+          if (!mounted) return;
+          setTableData(tableDataAux);
         }
-        setTableData(tableDataAux);
+      } catch (error) {
+        if (Axios.isCancel(error)) {
+          // cancelled
+        } else {
+          throw error;
+        }
       }
-      setLoading(false);
     }
     loadTable();
+    return () => {
+      // Runs when component will unmount
+      mounted = false;
+    };
   }, [league]);
 
   return (
@@ -78,13 +93,22 @@ export default function LeagueDetail({ route }) {
       <Container>
         {!loading ? (
           <CalendarView>
-            <Icon name="calendar-alt" size={20} color="#fff" />
+            <Icon
+              name="calendar"
+              size={20}
+              color={colors.text}
+              onPress={() =>
+                navigation.navigate('Matches', {
+                  league,
+                })
+              }
+            />
           </CalendarView>
         ) : null}
         <Logo source={{ uri: league.strBadge }} />
         <Title>{league.strLeague}</Title>
         {loading ? (
-          <ActivityIndicator color="#fff" size={30} />
+          <ActivityIndicator color={colors.text} size={30} />
         ) : (
           <>
             {tableData.length > 0 ? (
@@ -107,7 +131,7 @@ export default function LeagueDetail({ route }) {
                         widthArr={widthArray}
                         style={[
                           styles.row,
-                          index % 2 && { backgroundColor: '#fff' },
+                          index % 2 && { backgroundColor: colors.background },
                         ]}
                         textStyle={styles.text}
                       />
@@ -138,5 +162,8 @@ LeagueDetail.propTypes = {
         strCurrentSeason: PropTypes.string.isRequired,
       }),
     }),
+  }).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
   }).isRequired,
 };

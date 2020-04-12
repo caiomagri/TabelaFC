@@ -1,17 +1,12 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.TouchableOpacity`
-  display: flex;
-  flex-direction: column;
+export const Container = styled.View`
+  flex-direction: row;
   align-items: center;
-  margin: 10px 0px;
+  justify-content: flex-end;
+  margin: 5px;
 `;
 
-export const Logo = styled.Image`
-  height: 50px;
-  width: 50px;
-  margin: 5px 10px;
-`;
 export const Title = styled.Text`
   font-size: 16px;
   color: ${props => props.theme.colors.text};
