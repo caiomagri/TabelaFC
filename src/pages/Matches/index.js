@@ -7,6 +7,7 @@ import api from '../../services/api';
 
 import Background from '../../components/Background';
 import Match from '../../components/Match';
+import EmptyData from '../../components/EmptyData';
 
 import { Container, MatchesList } from './styles';
 
@@ -40,11 +41,19 @@ export default function Matches({ route }) {
         {loading ? (
           <ActivityIndicator color={colors.text} size={30} />
         ) : (
-          <MatchesList
-            data={matches}
-            keyExtractor={item => String(item.idEvent)}
-            renderItem={({ item }) => <Match data={item} />}
-          />
+          <>
+            {matches && matches.length > 0 ? (
+              <MatchesList
+                data={matches}
+                keyExtractor={item => String(item.idEvent)}
+                renderItem={({ item }) => <Match data={item} />}
+              />
+            ) : (
+              <EmptyData>
+                Não encontrados nenhuma partida agendada para essa liga :(
+              </EmptyData>
+            )}
+          </>
         )}
       </Container>
     </Background>

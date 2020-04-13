@@ -29,6 +29,7 @@ export default function createRouter() {
           name="Leagues"
           component={Leagues}
           options={{
+            unmountOnBlur: true,
             tabBarLabel: 'Ligas',
             tabBarIcon: () => (
               <Icon name="trophy" size={20} color={colors.secondary} />
@@ -40,6 +41,7 @@ export default function createRouter() {
           name="Favorites"
           component={Favorites}
           options={{
+            unmountOnBlur: true,
             tabBarLabel: 'Favoritos',
             tabBarIcon: () => (
               <Icon name="star" size={20} color={colors.secondary} />

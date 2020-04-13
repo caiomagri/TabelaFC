@@ -12,5 +12,6 @@ export default {
     inactiveTintColor: '#999',
     inactiveBackgroundColor: '#fff',
     activeBackgroundColor: '#f5f5f5',
+    button: lighten(0.1, '#20232a'),
   },
 };

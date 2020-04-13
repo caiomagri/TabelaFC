@@ -17,15 +17,19 @@ export const Title = styled.Text`
   text-align: center;
 `;
 
-export const CalendarView = styled.View`
+export const ButtonView = styled.View`
   flex-direction: row;
   align-self: flex-end;
+  justify-content: space-between;
   margin-top: 10px;
   margin-right: 10px;
 `;
 
-export const EmptyData = styled.Text`
-  color: ${props => props.theme.colors.text};
-  text-align: center;
-  margin-top: 50px;
+export const Button = styled.TouchableOpacity`
+  height: 46px;
+  border-radius: 4px;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 10px;
 `;

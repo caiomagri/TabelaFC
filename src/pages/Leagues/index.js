@@ -8,9 +8,10 @@ import api from '../../services/api';
 
 import Background from '../../components/Background';
 import InputSearch from '../../components/InputSearch';
-import LeagueItem from '../../components/LeagueItem';
+import LeagueList from '../../components/LeagueList';
+import EmptyData from '../../components/EmptyData';
 
-import { Container, LeagueList } from './styles';
+import { Container } from './styles';
 
 export default function Leagues({ navigation }) {
   const { colors } = useContext(ThemeContext);
@@ -20,12 +21,16 @@ export default function Leagues({ navigation }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let mounted = true;
+
     async function loadLeagues() {
       try {
         const url = 'search_all_leagues.php?s=Soccer';
         const response = await api.get(url);
 
         if (response.status === 200) {
+          if (!mounted) return;
+
           setLeagues(response.data.countrys);
           setFilteredLeagues(response.data.countrys);
         }
@@ -39,6 +44,10 @@ export default function Leagues({ navigation }) {
       }
     }
     loadLeagues();
+    return () => {
+      // Runs when component will unmount
+      mounted = false;
+    };
   }, []);
 
   useEffect(() => {
@@ -62,13 +71,11 @@ export default function Leagues({ navigation }) {
           <ActivityIndicator color={colors.text} size={30} />
         ) : (
           <>
-            <LeagueList
-              data={filteredLeagues}
-              keyExtractor={item => String(item.idLeague)}
-              renderItem={({ item }) => (
-                <LeagueItem data={item} navigation={navigation} />
-              )}
-            />
+            {filteredLeagues.length > 0 ? (
+              <LeagueList data={filteredLeagues} navigation={navigation} />
+            ) : (
+              <EmptyData>Não encontramos nenhuma liga :(</EmptyData>
+            )}
           </>
         )}
       </Container>
