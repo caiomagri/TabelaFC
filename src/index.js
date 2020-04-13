@@ -21,8 +21,8 @@ const Stack = createStackNavigator();
 export default function Index() {
   const [theme, setTheme] = useState(light);
 
-  async function setThemeToStorage(key, value) {
-    await AsyncStorage.setItem(key, JSON.stringify(value));
+  function setThemeToStorage(key, value) {
+    AsyncStorage.setItem(key, JSON.stringify(value));
     setTheme(value);
   }
 
