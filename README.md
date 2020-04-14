@@ -1,3 +1,9 @@
+| | | |
+|:-------------------------:|:-------------------------:|:-------------------------:|
+|<img width="1604" src="./src/assets/home_light.jpeg">  Home | <img width="1604" src="./src/assets/detail_light.jpeg"> League Detail|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="./src/assets/match_light.jpeg"> League Matches|
+|
+<img width="1604" src="./src/assets/home_dark.jpeg">  Home | <img width="1604" src="./src/assets/detail_dark.jpeg"> League Detail|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="./src/assets/match_dark.jpeg"> League Matches|
+
 <h3 align="center">
 <img src="./src/assets/icon.png">
 </h3>
@@ -5,8 +11,7 @@
   TabelaFC
 </h1>
 
-
-<p align="center">Application for viewing soccer tables and matches.</blockquote>
+<p align="center">Aplicativo para visualização de tabelas e partidas de futebol.</blockquote>
 
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/kaiomagri/TabelaFC">
@@ -22,26 +27,13 @@
   </a>
 </p>
 
-<p align="center">
-  <a href="#tabelafc-
-application-proposal">Application proposal</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#tabelafc-techs">Techs</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#tabelafc-installation">Installation</a>
-</p>
-
-| | | |
-|:-------------------------:|:-------------------------:|:-------------------------:|
-|<img width="1604" src="./src/assets/home_light.jpeg">  Home | <img width="1604" src="./src/assets/detail_light.jpeg"> League Detail|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="./src/assets/match_light.jpeg"> League Matches|
-|
-<img width="1604" src="./src/assets/home_dark.jpeg">  Home | <img width="1604" src="./src/assets/detail_dark.jpeg"> League Detail|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="./src/assets/match_dark.jpeg"> League Matches|
-
-## :tabelafc: Application proposal
+## Application Proposal
 
 This application is intended to assist in queries on results of football matches and their respective results and ranking tables
 
 
 
-## :tabelafc: Techs
+## Techs
 
  - [React Native](https://reactnative.dev/)
  - [React Navigation](https://reactnavigation.org/)
@@ -52,7 +44,7 @@ This application is intended to assist in queries on results of football matches
  - [React Vector Icons](https://www.npmjs.com/package/react-native-vector-icons)
  - [Styled Components](https://www.npmjs.com/package/styled-components)
 
-## :tabelafc: Installation
+## How to Run
 
 ### All my tests were done using cell phones with android operating systems. If you want to use the IOS operating system, you will need to make some extra settings regarding the dependency libs.
 
