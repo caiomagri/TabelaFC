@@ -1,9 +1,3 @@
-| | | |
-|:-------------------------:|:-------------------------:|:-------------------------:|
-|<img width="1604" src="./src/assets/home_light.jpeg">  Home | <img width="1604" src="./src/assets/detail_light.jpeg"> League Detail|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="./src/assets/match_light.jpeg"> League Matches|
-|
-<img width="1604" src="./src/assets/home_dark.jpeg">  Home | <img width="1604" src="./src/assets/detail_dark.jpeg"> League Detail|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="./src/assets/match_dark.jpeg"> League Matches|
-
 <h3 align="center">
 <img src="./src/assets/icon.png">
 </h3>
@@ -26,6 +20,15 @@
     <img alt="Stargazers" src="https://img.shields.io/github/stars/kaiomagri/TabelaFC">
   </a>
 </p>
+
+
+| | | |
+|:-------------------------:|:-------------------------:|:-------------------------:|
+|<img width="1604" src="./src/assets/home_light.jpeg">  Home | <img width="1604" src="./src/assets/detail_light.jpeg"> League Detail|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="./src/assets/match_light.jpeg"> League Matches|
+|
+<img width="1604" src="./src/assets/home_dark.jpeg">  Home | <img width="1604" src="./src/assets/detail_dark.jpeg"> League Detail|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="./src/assets/match_dark.jpeg"> League Matches
+| | |
+
 
 ## Application Proposal
 
