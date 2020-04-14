@@ -66,4 +66,4 @@ Run app on Device/Emulator
 
 ### `npx react-native run-android`
 
-Feito com 💜 by kaiomagri :wave:
+By kaiomagri :wave:
