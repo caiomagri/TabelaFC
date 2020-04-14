@@ -5,7 +5,7 @@
   TabelaFC
 </h1>
 
-<p align="center">Aplicativo para visualização de tabelas e partidas de futebol.</blockquote>
+<p align="center">Application for viewing football tables and matches.</blockquote>
 
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/kaiomagri/TabelaFC">
